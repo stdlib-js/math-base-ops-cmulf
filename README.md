@@ -30,30 +30,14 @@ limitations under the License.
 
 <!-- /.intro -->
 
-<section class="installation">
 
-## Installation
-
-```bash
-npm install @stdlib/math-base-ops-cmulf
-```
-
-Alternatively,
-
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm` branch][esm-url].
--   If you are using Deno, visit the [`deno` branch][deno-url].
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd` branch][umd-url].
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-var cmulf = require( '@stdlib/math-base-ops-cmulf' );
+import cmulf from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-ops-cmulf@esm/index.mjs';
 ```
 
 #### cmulf( z1, z2 )
@@ -61,9 +45,9 @@ var cmulf = require( '@stdlib/math-base-ops-cmulf' );
 Multiples two single-precision complex floating-point numbers.
 
 ```javascript
-var Complex64 = require( '@stdlib/complex-float32' );
-var real = require( '@stdlib/complex-real' );
-var imag = require( '@stdlib/complex-imag' );
+import Complex64 from 'https://cdn.jsdelivr.net/gh/stdlib-js/complex-float32@esm/index.mjs';
+import real from 'https://cdn.jsdelivr.net/gh/stdlib-js/complex-real@esm/index.mjs';
+import imag from 'https://cdn.jsdelivr.net/gh/stdlib-js/complex-imag@esm/index.mjs';
 
 var z1 = new Complex64( 5.0, 3.0 );
 var z2 = new Complex64( -2.0, 1.0 );
@@ -88,10 +72,15 @@ var im = imag( v );
 
 <!-- eslint no-undef: "error" -->
 
-```javascript
-var Complex64 = require( '@stdlib/complex-float32' );
-var discreteUniform = require( '@stdlib/random-base-discrete-uniform' ).factory;
-var cmulf = require( '@stdlib/math-base-ops-cmulf' );
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="module">
+
+import Complex64 from 'https://cdn.jsdelivr.net/gh/stdlib-js/complex-float32@esm/index.mjs';
+var discreteUniform = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/random-base-discrete-uniform' ).factory;
+import cmulf from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-ops-cmulf@esm/index.mjs';
 
 var rand;
 var z1;
@@ -106,6 +95,10 @@ for ( i = 0; i < 100; i++ ) {
     z3 = cmulf( z1, z2 );
     console.log( '(%s) * (%s) = %s', z1.toString(), z2.toString(), z3.toString() );
 }
+
+</script>
+</body>
+</html>
 ```
 
 </section>
@@ -114,97 +107,7 @@ for ( i = 0; i < 100; i++ ) {
 
 <!-- C interface documentation. -->
 
-* * *
 
-<section class="c">
-
-## C APIs
-
-<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
-
-<section class="intro">
-
-</section>
-
-<!-- /.intro -->
-
-<!-- C usage documentation. -->
-
-<section class="usage">
-
-### Usage
-
-```c
-#include "stdlib/math/base/ops/cmulf.h"
-```
-
-#### stdlib_base_cmulf( z1, z2 )
-
-Multiplies two single-precision complex floating-point numbers.
-
-```c
-#include <complex.h>
-
-float complex z1 = 5.0f + 3.0f*I;
-float complex z2 = -2.0f + 1.0f*I;
-
-float complex out = stdlib_base_cmulf( z1, z2 );
-// returns -13.0f-1.0f*I
-```
-
-The function accepts the following arguments:
-
--   **z1**: `[in] float complex` input value.
--   **z2**: `[in] float complex` input value.
-
-```c
-float complex stdlib_base_cmulf( const float complex z1, const float complex z2 );
-```
-
-</section>
-
-<!-- /.usage -->
-
-<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="notes">
-
-</section>
-
-<!-- /.notes -->
-
-<!-- C API usage examples. -->
-
-<section class="examples">
-
-### Examples
-
-```c
-#include "stdlib/math/base/ops/cmulf.h"
-#include <stdio.h>
-#include <complex.h>
-
-int main() {
-    float complex x[] = { 3.14f+1.5f*I, -3.14f-1.5f*I, 0.0f+0.0f*I, 0.0f/0.0f+0.0f/0.0f*I };
-
-    float complex v;
-    float complex y;
-    int i;
-    for ( i = 0; i < 4; i++ ) {
-        v = x[ i ];
-        y = stdlib_base_cmulf( v, v );
-        printf( "z = %f + %fi\ncmulf(z, z) = %f + %fi\n", crealf( v ), cimagf( v ), crealf( y ), cimagf( y ) );
-    }
-}
-```
-
-</section>
-
-<!-- /.examples -->
-
-</section>
-
-<!-- /.c -->
 
 <!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
 
@@ -223,7 +126,7 @@ int main() {
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
