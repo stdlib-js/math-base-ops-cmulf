@@ -50,7 +50,7 @@ limitations under the License.
 To use in Observable,
 
 ```javascript
-cmulf = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-ops-cmulf@umd/browser.js' )
+cmulf = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-ops-cmulf@v0.2.1-umd/browser.js' )
 ```
 
 To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
@@ -62,7 +62,7 @@ var cmulf = require( 'path/to/vendor/umd/math-base-ops-cmulf/index.js' )
 To include the bundle in a webpage,
 
 ```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-ops-cmulf@umd/browser.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-ops-cmulf@v0.2.1-umd/browser.js"></script>
 ```
 
 If no recognized module system is present, access bundle contents via the global scope:
