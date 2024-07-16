@@ -41,14 +41,32 @@ limitations under the License.
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/math-base-ops-cmulf
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-import cmulf from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-ops-cmulf@esm/index.mjs';
+var cmulf = require( '@stdlib/math-base-ops-cmulf' );
 ```
 
 #### cmulf( z1, z2 )
@@ -56,9 +74,9 @@ import cmulf from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-ops-cmulf@esm
 Multiples two single-precision complex floating-point numbers.
 
 ```javascript
-import Complex64 from 'https://cdn.jsdelivr.net/gh/stdlib-js/complex-float32@esm/index.mjs';
-import realf from 'https://cdn.jsdelivr.net/gh/stdlib-js/complex-realf@esm/index.mjs';
-import imagf from 'https://cdn.jsdelivr.net/gh/stdlib-js/complex-imagf@esm/index.mjs';
+var Complex64 = require( '@stdlib/complex-float32-ctor' );
+var realf = require( '@stdlib/complex-realf' );
+var imagf = require( '@stdlib/complex-imagf' );
 
 var z1 = new Complex64( 5.0, 3.0 );
 var z2 = new Complex64( -2.0, 1.0 );
@@ -83,15 +101,10 @@ var im = imagf( v );
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="module">
-
-import Complex64 from 'https://cdn.jsdelivr.net/gh/stdlib-js/complex-float32@esm/index.mjs';
-var discreteUniform = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/random-base-discrete-uniform' ).factory;
-import cmulf from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-ops-cmulf@esm/index.mjs';
+```javascript
+var Complex64 = require( '@stdlib/complex-float32-ctor' );
+var discreteUniform = require( '@stdlib/random-base-discrete-uniform' ).factory;
+var cmulf = require( '@stdlib/math-base-ops-cmulf' );
 
 var rand;
 var z1;
@@ -106,10 +119,6 @@ for ( i = 0; i < 100; i++ ) {
     z3 = cmulf( z1, z2 );
     console.log( '(%s) * (%s) = %s', z1.toString(), z2.toString(), z3.toString() );
 }
-
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -118,7 +127,116 @@ for ( i = 0; i < 100; i++ ) {
 
 <!-- C interface documentation. -->
 
+* * *
 
+<section class="c">
+
+## C APIs
+
+<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
+
+<section class="intro">
+
+</section>
+
+<!-- /.intro -->
+
+<!-- C usage documentation. -->
+
+<section class="usage">
+
+### Usage
+
+```c
+#include "stdlib/math/base/ops/cmulf.h"
+```
+
+#### stdlib_base_cmulf( z1, z2 )
+
+Multiplies two single-precision complex floating-point numbers.
+
+```c
+#include "stdlib/complex/float32/ctor.h"
+#include "stdlib/complex/realf.h"
+#include "stdlib/complex/imagf.h"
+
+stdlib_complex64_t z1 = stdlib_complex64( 5.0f, 3.0f );
+stdlib_complex64_t z2 = stdlib_complex64( -2.0f, 1.0f );
+
+stdlib_complex64_t out = stdlib_base_cmulf( z1, z2 );
+
+float re = stdlib_realf( out );
+// returns -13.0f
+
+float im = stdlib_imagf( out );
+// returns -1.0f
+```
+
+The function accepts the following arguments:
+
+-   **z1**: `[in] stdlib_complex64_t` input value.
+-   **z2**: `[in] stdlib_complex64_t` input value.
+
+```c
+stdlib_complex64_t stdlib_base_cmulf( const stdlib_complex64_t z1, const stdlib_complex64_t z2 );
+```
+
+</section>
+
+<!-- /.usage -->
+
+<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+
+<section class="notes">
+
+</section>
+
+<!-- /.notes -->
+
+<!-- C API usage examples. -->
+
+<section class="examples">
+
+### Examples
+
+```c
+#include "stdlib/math/base/ops/cmulf.h"
+#include "stdlib/complex/float32/ctor.h"
+#include "stdlib/complex/float32/reim.h"
+#include <stdio.h>
+
+int main( void ) {
+    const stdlib_complex64_t x[] = {
+        stdlib_complex64( 3.14f, 1.5f ),
+        stdlib_complex64( -3.14f, 1.5f ),
+        stdlib_complex64( 0.0f, -0.0f ),
+        stdlib_complex64( 0.0f/0.0f, 0.0f/0.0f )
+    };
+
+    stdlib_complex64_t v;
+    stdlib_complex64_t y;
+    float re;
+    float im;
+    int i;
+    for ( i = 0; i < 4; i++ ) {
+        v = x[ i ];
+        stdlib_complex64_reim( v, &re, &im );
+        printf( "z = %f + %fi\n", re, im );
+
+        y = stdlib_base_cmulf( v, v );
+        stdlib_complex64_reim( y, &re, &im );
+        printf( "cmulf(z, z) = %f + %fi\n", re, im );
+    }
+}
+```
+
+</section>
+
+<!-- /.examples -->
+
+</section>
+
+<!-- /.c -->
 
 <!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
 
@@ -145,7 +263,7 @@ for ( i = 0; i < 100; i++ ) {
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
@@ -210,11 +328,11 @@ Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 
 <!-- <related-links> -->
 
-[@stdlib/math/base/ops/caddf]: https://github.com/stdlib-js/math-base-ops-caddf/tree/esm
+[@stdlib/math/base/ops/caddf]: https://github.com/stdlib-js/math-base-ops-caddf
 
-[@stdlib/math/base/ops/cmul]: https://github.com/stdlib-js/math-base-ops-cmul/tree/esm
+[@stdlib/math/base/ops/cmul]: https://github.com/stdlib-js/math-base-ops-cmul
 
-[@stdlib/math/base/ops/csubf]: https://github.com/stdlib-js/math-base-ops-csubf/tree/esm
+[@stdlib/math/base/ops/csubf]: https://github.com/stdlib-js/math-base-ops-csubf
 
 <!-- </related-links> -->
 
