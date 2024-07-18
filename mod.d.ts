@@ -1,7 +1,7 @@
-/**
+/*
 * @license Apache-2.0
 *
-* Copyright (c) 2022 The Stdlib Authors.
+* Copyright (c) 2019 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -16,23 +16,18 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
 
-var Complex64 = require( '@stdlib/complex-float32-ctor' );
-var addon = require( './../src/addon.node' );
-
-
-// MAIN //
+import { Complex64 } from '@stdlib/types/complex';
 
 /**
 * Multiplies two single-precision complex floating-point numbers.
 *
-* @private
-* @param {Complex64} z1 - complex number
-* @param {Complex64} z2 - complex number
-* @returns {Complex64} result
+* @param z1 - complex number
+* @param z2 - complex number
+* @returns result
 *
 * @example
 * var Complex64 = require( '@stdlib/complex-float32-ctor' );
@@ -54,12 +49,9 @@ var addon = require( './../src/addon.node' );
 * var im = imagf( out );
 * // returns -1.0
 */
-function cmulf( z1, z2 ) {
-	var v = addon( z1, z2 );
-	return new Complex64( v.re, v.im );
-}
+declare function cmulf( z1: Complex64, z2: Complex64 ): Complex64;
 
 
 // EXPORTS //
 
-module.exports = cmulf;
+export = cmulf;
