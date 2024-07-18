@@ -75,8 +75,8 @@ Multiples two single-precision complex floating-point numbers.
 
 ```javascript
 var Complex64 = require( '@stdlib/complex-float32-ctor' );
-var realf = require( '@stdlib/complex-realf' );
-var imagf = require( '@stdlib/complex-imagf' );
+var realf = require( '@stdlib/complex-float32-real' );
+var imagf = require( '@stdlib/complex-float32-imag' );
 
 var z1 = new Complex64( 5.0, 3.0 );
 var z2 = new Complex64( -2.0, 1.0 );
@@ -157,18 +157,18 @@ Multiplies two single-precision complex floating-point numbers.
 
 ```c
 #include "stdlib/complex/float32/ctor.h"
-#include "stdlib/complex/realf.h"
-#include "stdlib/complex/imagf.h"
+#include "stdlib/complex/float32/real.h"
+#include "stdlib/complex/float32/imag.h"
 
 stdlib_complex64_t z1 = stdlib_complex64( 5.0f, 3.0f );
 stdlib_complex64_t z2 = stdlib_complex64( -2.0f, 1.0f );
 
 stdlib_complex64_t out = stdlib_base_cmulf( z1, z2 );
 
-float re = stdlib_realf( out );
+float re = stdlib_complex64_real( out );
 // returns -13.0f
 
-float im = stdlib_imagf( out );
+float im = stdlib_complex64_imag( out );
 // returns -1.0f
 ```
 
@@ -246,7 +246,7 @@ int main( void ) {
 
 ## See Also
 
--   <span class="package-name">[`@stdlib/math-base/ops/caddf`][@stdlib/math/base/ops/caddf]</span><span class="delimiter">: </span><span class="description">add two single-precision complex floating-point numbers.</span>
+-   <span class="package-name">[`@stdlib/complex-float32/base/add`][@stdlib/complex/float32/base/add]</span><span class="delimiter">: </span><span class="description">add two single-precision complex floating-point numbers.</span>
 -   <span class="package-name">[`@stdlib/math-base/ops/cmul`][@stdlib/math/base/ops/cmul]</span><span class="delimiter">: </span><span class="description">multiply two double-precision complex floating-point numbers.</span>
 -   <span class="package-name">[`@stdlib/math-base/ops/csubf`][@stdlib/math/base/ops/csubf]</span><span class="delimiter">: </span><span class="description">subtract two single-precision complex floating-point numbers.</span>
 
@@ -328,7 +328,7 @@ Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 
 <!-- <related-links> -->
 
-[@stdlib/math/base/ops/caddf]: https://github.com/stdlib-js/math-base-ops-caddf
+[@stdlib/complex/float32/base/add]: https://github.com/stdlib-js/complex-float32-base-add
 
 [@stdlib/math/base/ops/cmul]: https://github.com/stdlib-js/math-base-ops-cmul
 
